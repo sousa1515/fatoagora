@@ -1,55 +1,135 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>FatoAgora — Notícias</title>
 <meta name="description" content="FatoAgora — notícias e atualizações em um só lugar.">
 <style>
 :root{--red:#e11d48;--dark:#111827;--bg:#f4f5f7;--card:#fff;--text:#171717;--muted:#6b7280}
-*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:var(--bg);color:var(--text)}
-header{background:var(--dark);color:#fff;position:sticky;top:0;z-index:20}.bar{max-width:1150px;margin:auto;padding:15px 20px;display:flex;align-items:center;gap:20px}
-.logo{font-size:27px;font-weight:900;white-space:nowrap}.logo b{color:#fb7185}nav{display:flex;gap:5px;overflow:auto;flex:1}nav button,.icon{border:0;background:transparent;color:#fff;padding:9px 11px;border-radius:8px;font-weight:bold;cursor:pointer;white-space:nowrap}nav button:hover,nav .active{background:var(--red)}.icon{background:#fff;color:#111}
-main{max-width:1150px;margin:auto;padding:25px 20px}.hero{display:grid;grid-template-columns:2fr 1fr;gap:18px}.card{background:var(--card);border-radius:16px;box-shadow:0 4px 18px #0001;overflow:hidden}.lead{min-height:390px;padding:32px;display:flex;align-items:end;color:#fff;background:linear-gradient(135deg,#172554,#e11d48)}.lead h1{font-size:40px;line-height:1.05;margin:12px 0}.tag{display:inline-block;background:var(--red);color:#fff;padding:5px 9px;border-radius:6px;font-size:11px;font-weight:800}.side{padding:22px}.side article{padding:15px 0;border-bottom:1px solid #ddd}.side article:last-child{border:0}.side h3{margin:7px 0;line-height:1.25}.muted{color:var(--muted);font-size:12px}.heading{display:flex;align-items:center;gap:15px;margin:28px 0 15px}.heading h2{margin:0}.line{height:3px;background:var(--red);flex:1}.search{display:none;margin:0 0 18px}.search input{width:100%;padding:14px;border:1px solid #ddd;border-radius:10px;font-size:16px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.news{padding-bottom:15px}.thumb{height:150px;display:grid;place-items:center;font-size:48px;background:linear-gradient(135deg,#334155,#cbd5e1)}.body{padding:15px}.body h3{margin:9px 0;font-size:18px;line-height:1.25}.ad{margin:20px 0;padding:22px;text-align:center;border:1px dashed #a1a1aa;color:#71717a;border-radius:12px;background:#fff}.ad strong{display:block;margin-bottom:5px}footer{background:#111827;color:#bbb;padding:30px 20px;text-align:center;margin-top:20px}
-@media(max-width:800px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:1fr 1fr}.lead{min-height:320px}.lead h1{font-size:31px}}@media(max-width:560px){.bar{flex-wrap:wrap}.logo{width:100%}.grid{grid-template-columns:1fr}}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:var(--bg);color:var(--text)}
+header{background:var(--dark);color:#fff;position:sticky;top:0;z-index:20}
+.bar{max-width:1150px;margin:auto;padding:15px 20px;display:flex;align-items:center;gap:20px}
+.logo{font-size:27px;font-weight:900;white-space:nowrap}
+.logo span{color:#fb7185}
+nav{display:flex;gap:5px;overflow:auto;flex:1}
+nav button,.icon{border:0;background:transparent;color:#fff;padding:9px 11px;border-radius:8px;font-weight:bold;cursor:pointer;white-space:nowrap}
+nav button:hover,nav .active{background:var(--red)}
+.icon{background:#fff;color:#111}
+main{max-width:1150px;margin:auto;padding:25px 20px}
+.hero{display:grid;grid-template-columns:2fr 1fr;gap:18px}
+.card{background:var(--card);border-radius:16px;box-shadow:0 4px 18px #0001;overflow:hidden}
+.lead{min-height:390px;padding:32px;display:flex;align-items:end;color:#fff;background:linear-gradient(135deg,#172554,#e11d48)}
+.lead h1{font-size:40px;line-height:1.05;margin:12px 0}
+.tag{display:inline-block;background:var(--red);color:#fff;padding:5px 9px;border-radius:6px;font-size:11px;font-weight:800}
+.side{padding:22px}
+.side article{padding:15px 0;border-bottom:1px solid #ddd}
+.side article:last-child{border:0}
+.side h3{margin:7px 0;line-height:1.25}
+.muted{color:var(--muted);font-size:12px}
+.heading{display:flex;align-items:center;gap:15px;margin:28px 0 15px}
+.heading h2{margin:0}
+.line{height:3px;background:var(--red);flex:1}
+.search{display:none;margin:0 0 18px}
+.search input{width:100%;padding:14px;border:1px solid #ddd;border-radius:10px;font-size:16px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.news{padding-bottom:15px}
+.thumb{height:150px;display:grid;place-items:center;font-size:48px;background:linear-gradient(135deg,#334155,#cbd5e1)}
+.body{padding:15px}
+.body h3{margin:9px 0;font-size:18px;line-height:1.25}
+.body p{line-height:1.45}
+.news a{color:inherit;text-decoration:none}
+.source{display:inline-block;margin-top:8px;color:var(--red);font-size:12px;font-weight:bold}
+.ad{margin:20px 0;padding:22px;text-align:center;border:1px dashed #a1a1aa;color:#71717a;border-radius:12px;background:#fff}
+.ad strong{display:block;margin-bottom:5px}
+footer{background:#111827;color:#bbb;padding:30px 20px;text-align:center;margin-top:20px}
+@media(max-width:800px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:1fr 1fr}.lead{min-height:320px}.lead h1{font-size:31px}}
+@media(max-width:560px){.bar{flex-wrap:wrap}.logo{width:100%}.grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <header><div class="bar">
 <div class="logo">FATO<span>AGORA</span></div>
 <nav>
-<button class="active" onclick="filter('Todas',this)">Todas</button><button onclick="filter('Brasil',this)">Brasil</button><button onclick="filter('Mundo',this)">Mundo</button><button onclick="filter('Esportes',this)">Esportes</button><button onclick="filter('Tecnologia',this)">Tecnologia</button>
-</nav><button class="icon" onclick="toggleSearch()">🔎</button>
+<button class="active" onclick="filter('Todas',this)">Todas</button>
+<button onclick="filter('Brasil',this)">Brasil</button>
+<button onclick="filter('Mundo',this)">Mundo</button>
+<button onclick="filter('Esportes',this)">Esportes</button>
+<button onclick="filter('Tecnologia',this)">Tecnologia</button>
+</nav>
+<button class="icon" onclick="toggleSearch()">🔎</button>
 </div></header>
+
 <main>
 <section class="hero">
-<article class="card lead"><div><span class="tag">PORTAL DE NOTÍCIAS</span><h1>Informação rápida, clara e fácil de acompanhar.</h1><p>O FatoAgora reúne as principais atualizações do dia em um só lugar.</p></div></article>
+<article class="card lead">
+<div>
+<span class="tag">EDIÇÃO DE 18/09/2026</span>
+<h1>Informação rápida, clara e fácil de acompanhar.</h1>
+<p>As principais notícias do dia reunidas em um só lugar.</p>
+</div>
+</article>
+
 <aside class="card side"><h2>🔥 Em alta</h2>
-<article><span class="tag">Tecnologia</span><h3>As novidades que estão movimentando o mundo digital</h3><p class="muted">Atualização recente</p></article>
-<article><span class="tag">Esportes</span><h3>Confira os destaques da rodada</h3><p class="muted">Atualização recente</p></article>
-<article><span class="tag">Brasil</span><h3>Os principais acontecimentos do dia</h3><p class="muted">Atualização recente</p></article>
-</aside></section>
-<div class="ad"><strong>ESPAÇO PARA PUBLICIDADE</strong><span>Este espaço pode receber anúncios depois que você configurar uma plataforma de publicidade.</span></div>
-<div class="search" id="search"><input id="q" placeholder="Pesquisar notícias..." oninput="search()"></div>
+<article><span class="tag">Esportes</span><h3>Libertadores define as semifinais de 2026</h3><p class="muted">18 de setembro de 2026</p></article>
+<article><span class="tag">Brasil</span><h3>Brasil tem 33 hospitais em ranking internacional</h3><p class="muted">18 de setembro de 2026</p></article>
+<article><span class="tag">Tecnologia</span><h3>Novidades de inteligência artificial ganham destaque</h3><p class="muted">Atualizado hoje</p></article>
+</aside>
+</section>
+
+<div class="ad"><strong>ESPAÇO PARA PUBLICIDADE</strong><span>Área reservada para futuros anúncios.</span></div>
+<div class="search" id="search"><input id="q" placeholder="Pesquisar notícias..." oninput="searchNews()"></div>
 <div class="heading"><h2>Últimas notícias</h2><div class="line"></div></div>
 <section class="grid" id="grid"></section>
 </main>
+
 <footer><strong>FATOAGORA</strong><br><br>Informação, notícias e atualizações em um só lugar.<br><br><small>© 2026 FatoAgora · Conteúdo editorial independente</small></footer>
+
 <script>
 const news=[
-["Brasil","🇧🇷","Principais acontecimentos do Brasil ganham destaque nesta manhã"],
-["Mundo","🌎","Confira as notícias que estão movimentando o mundo hoje"],
-["Esportes","⚽","Clubes se preparam para uma rodada decisiva"],
-["Tecnologia","🤖","Inteligência artificial continua transformando a tecnologia"],
-["Brasil","🏙️","Novos acontecimentos chamam atenção nas cidades"],
-["Mundo","🛰️","Ciência e espaço: confira as novidades"],
-["Esportes","🏆","Veja os destaques esportivos do dia"],
-["Tecnologia","💻","Novidades digitais prometem facilitar tarefas do cotidiano"],
-["Brasil","📊","Economia é assunto de destaque nesta semana"]
-];let cat="Todas";
-function render(list){grid.innerHTML=list.map(n=>`<article class="card news"><div class="thumb">${n[1]}</div><div class="body"><span class="tag">${n[0]}</span><h3>${n[2]}</h3><p class="muted">FatoAgora · notícia de exemplo</p></div></article>`).join("")}
-function filter(c,b){cat=c;document.querySelectorAll("nav button").forEach(x=>x.classList.remove("active"));b.classList.add("active");render(c==="Todas"?news:news.filter(n=>n[0]===c))}
-function toggleSearch(){search.style.display=search.style.display==="block"?"none":"block";if(search.style.display==="block")q.focus()}
-function search(){let s=q.value.toLowerCase();render(news.filter(n=>(cat==="Todas"||n[0]===cat)&&n[2].toLowerCase().includes(s)))}
+["Brasil","🇧🇷","Brasil tem 33 hospitais entre os melhores do mundo em ranking internacional","18/09/2026","Folha de S.Paulo","https://www1.folha.uol.com.br/equilibrioesaude/2026/09/brasil-tem-33-hospitais-entre-os-melhores-do-mundo-em-ranking-internacional-da-newsweek.shtml"],
+["Brasil","🐔","Brasil deve retomar exportações de carne de frango para a União Europeia","18/09/2026","Folha de S.Paulo","https://c-level.folha.uol.com.br/agro/2026/09/brasil-vai-retomar-exportacoes-de-carne-de-frango-a-europa-diz-secretario-executivo-do-mapa.shtml"],
+["Brasil","📈","Dólar gira em torno de R$ 5,14 e mercado acompanha decisões de juros","18/09/2026","UOL Economia","https://economia.uol.com.br/cotacoes/noticias/redacao/2026/09/18/dolar-bolsa-abre-hoje-18-de-setembro-de-2026.ghtm"],
+["Mundo","🌎","Assembleia Geral da ONU reúne líderes para uma semana de decisões internacionais","18/09/2026","Euronews","https://pt.euronews.com/video/2026/09/18/noticias-do-dia-18-de-setembro-2026-noite"],
+["Mundo","📱","Aplicativo russo Max é alvo de atenção por questões de privacidade e segurança","18/09/2026","RTP Notícias","https://www.rtp.pt/noticias/mundo/porta-das-traseiras-max-uma-aplicacao-russa-para-espiar-os-cidadaos_n1766236"],
+["Esportes","🏆","Libertadores define Fluminense x Palmeiras e Estudiantes x Flamengo nas semifinais","18/09/2026","CONMEBOL Libertadores","https://gol.conmebol.com/libertadores/pt-br/news/quatro-pelo-trono-estao-definidas-semifinais-da-conmebol-libertadores"],
+["Esportes","⚽","Corinthians é eliminado e Brasil fica com três representantes nas semifinais da Libertadores","18/09/2026","UOL Esporte","https://www.uol.com.br/esporte/futebol/ultimas-noticias/2026/09/18/brasil-sem-4-semifinalistas-libertadores.ghtm"],
+["Esportes","🎂","Ronaldo completa 50 anos e comemora data especial nesta sexta-feira","18/09/2026","Band","https://www.band.com.br/noticias/ronaldo-completa-50-anos-entenda-por-que-ele-comemora-dois-aniversarios"],
+["Tecnologia","🤖","Inteligência artificial segue entre os principais assuntos do setor de tecnologia","18/09/2026","CartaCapital","https://www.cartacapital.com.br/toquetec/dropstec-15-09-2026-sua-coletanea-diaria-de-noticias-sobre-tecnologia/"],
+["Tecnologia","💻","Rumores sobre próximos smartphones movimentam o mercado de tecnologia","18/09/2026","SpaceMoney","https://www.spacemoney.com.br/tecnologia/iphone-18-adiado-2027-2/"],
+["Ciência","🌙","Lua chega ao quarto crescente nesta sexta-feira","18/09/2026","Oficina da Net","https://www.oficinadanet.com.br/ciencia/72697-fase-da-lua-hoje-sexta-18-setembro-2026"]
+];
+let cat="Todas";
+
+function render(list){
+ document.getElementById("grid").innerHTML=list.map(n=>`
+ <article class="card news">
+   <div class="thumb">${n[1]}</div>
+   <div class="body">
+     <span class="tag">${n[0]}</span>
+     <h3>${n[2]}</h3>
+     <p class="muted">${n[3]} · Fonte: ${n[4]}</p>
+     <a class="source" href="${n[5]}" target="_blank" rel="noopener noreferrer">Ler fonte →</a>
+   </div>
+ </article>`).join("");
+}
+function filter(c,b){
+ cat=c;
+ document.querySelectorAll("nav button").forEach(x=>x.classList.remove("active"));
+ b.classList.add("active");
+ render(c==="Todas"?news:news.filter(n=>n[0]===c));
+}
+function toggleSearch(){
+ const box=document.getElementById("search");
+ box.style.display=box.style.display==="block"?"none":"block";
+ if(box.style.display==="block")document.getElementById("q").focus();
+}
+function searchNews(){
+ let s=document.getElementById("q").value.toLowerCase();
+ render(news.filter(n=>(cat==="Todas"||n[0]===cat)&&n[2].toLowerCase().includes(s)));
+}
 render(news);
 </script>
-</body></html>
+</body>
+</html>
